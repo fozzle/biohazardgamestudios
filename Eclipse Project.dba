@@ -1,0 +1,50 @@
+rem Eclipse Project
+
+rem skeleton
+sync on : sync rate 50 : hide mouse
+rem LOAD OBJECTS
+load object "C:\Program Files\Dark Basic Software\Dark Basic Professional\Media\Models\Deagle\Deagle.3ds",1
+rem load MUSIC
+load music "C:\Program Files\Dark Basic Software\Dark Basic Professional\Projects\Ecclipse Project\Music\Music\Top songs\Intelligence.mid",1
+rem LOAD SOUND
+load sound "C:\Program Files\Dark Basic Software\Dark Basic Professional\Projects\Ecclipse Project\Sounds\Weapons\glock_fire.wav",1
+rem LOAD IMAGES
+load image "C:\Documents and Settings\Compaq_Owner\My Documents\TEXTURES\grass.bmp",1
+load image "C:\Documents and Settings\Compaq_Owner\My Documents\TEXTURES\Gun_pistol_handle.bmp",2
+load image "C:\Documents and Settings\Compaq_Owner\My Documents\TEXTURES\Road.bmp",3
+load image "C:\Documents and Settings\Compaq_Owner\My Documents\TEXTURES\Floor_control1.bmp",4
+rem MAKE MATRIX
+make matrix 1,20,20,100,100
+
+rem ----------------
+rem -----START------
+rem ----------------
+
+do
+rem >>>>>>>>>>>>
+
+   rem controls
+   if mouseclick()= 1 then play sound 1
+   if upkey() = 1 then move camera +.1
+   if downkey() = 1 then move camera -.1
+   rotate camera camera angle x(0)+(mousemovey()/7.0),camera angle y(0)+(mousemovex()/7.0),0
+   if keystate(46)= 1 then ghost object on 1,.05
+   if keystate(46) = 0 then ghost object off 1
+   rem object qualities
+   position object 1,.5,-2.5,5
+   texture object 1,2
+   rotate object 1,-10,0,0
+   disable object zdepth 1
+   lock object on 1
+   rotate object 1,90,-90,180
+   scale object 1,15,15,15
+   rem music/sound
+   play music 1
+   loop music 1
+   rem camera qualities
+   set camera range 1,10000
+   rem other
+   prepare matrix texture 1,1,1,1
+sync
+rem <<<<<<<<<<<<
+loop
